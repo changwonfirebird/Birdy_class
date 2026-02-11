@@ -11,9 +11,11 @@ namespace Food_Tutorial.Food.Side
     {
         protected string type_name;
 
-        public Noodle(string type_name = "일반면")
+        private static string[] typeArray = new string[] { "일반면", "두꺼운면", "얇은면", "칼국수면", "쌀국수면" };
+
+        public Noodle(int type_idx = 0)
         {
-            this.type_name = type_name;
+            this.type_name = typeArray[type_idx];
         }
 
         public override string ToString()

@@ -8,17 +8,24 @@ using System.Xml.Linq;
 
 namespace Food_Tutorial.Food
 {
-    internal class Rameon
+    internal class Rameon : CookAbleFood
     {
         protected Label label;
         protected Soup[] soups;
         protected Ingredient[] ingredients;
         protected Noodle noodle;
 
-        protected bool isCooked = false;
+
+        private static int count = 0;
+
+        public static int GetCount()
+        {
+            return count;
+        }
 
         public Rameon(Label label, Soup[] soups, Ingredient[] ingredients, Noodle noodle)
         {
+            count = count + 1;
             this.label = label;
             this.soups = soups;
             this.ingredients = ingredients;
@@ -56,13 +63,11 @@ namespace Food_Tutorial.Food
                 "상태 : " + (isCooked ? "조리됨" : "조리안됨");
         }
 
-        public void Cook()
-        {
-            isCooked = true;
-        }
+        
 
-        public void SpecialCook(Func<Ingredient[]> func)
+        public override void SpecialCook(Func<Ingredient[]> func)
         {
+            base.SpecialCook(func);
             Ingredient[] add = func();
             int count = ingredients.Length + add.Length;
 
@@ -77,7 +82,7 @@ namespace Food_Tutorial.Food
             }
 
             ingredients = new_ingredients;
-            isCooked = true;
+            
         }
 
     }

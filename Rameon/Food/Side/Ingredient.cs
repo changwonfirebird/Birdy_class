@@ -14,9 +14,16 @@ namespace Food_Tutorial.Food.Side
         protected string status;//동결건조, 건조, 살균포장
         protected string name;
 
-        public Ingredient(string status = "동결건조", string name = "파")
+        private static string[] statusArray = new string[] { "동결건조", "건조", "진공", "기타" };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="status_idx">0 : 동결건조 1 : 건조 2: 진공 3 : 기타</param>
+        /// <param name="name"></param>
+        public Ingredient(int status_idx = 0, string name = "파")
         {
-            this.status = status;
+            this.status = statusArray[status_idx];
             this.name = name;
         }
 

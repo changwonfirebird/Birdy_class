@@ -12,10 +12,12 @@ namespace Food_Tutorial.Food.Side
         protected string type_name;
         protected string timing;
 
-        public Soup(string type_name = "신라면 가루 스프", string timing = "선첨")
+        private static string[] timingArray = new string[] { "선첨", "후첨" };
+
+        public Soup(string type_name = "신라면 가루 스프", int timing_idx = 0)
         {
             this.type_name = type_name;
-            this.timing = timing;
+            this.timing = timingArray[timing_idx];
         }
 
         public override string ToString()
